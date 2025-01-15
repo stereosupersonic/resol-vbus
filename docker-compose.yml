@@ -9,8 +9,6 @@ services:
       - HTTP_PORT=${HTTP_PORT:-3333}
     ports:
       - "${HTTP_PORT}:3333"
-    volumes:
-      - .:/usr/src/app
     env_file:
       - .env
     restart: always
