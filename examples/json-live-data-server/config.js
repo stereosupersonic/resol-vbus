@@ -1,0 +1,108 @@
+/*! resol-vbus | Copyright (c) 2013-present, Daniel Wippermann | MIT license */
+
+const path = require('path');
+
+
+
+const config = {
+
+    /**
+     * The level of details for log messages.
+     * @type {String}
+     */
+    logLevel: 'info',
+
+    /**
+     * The port number for the HTTP server to listen to.
+     * @type {Number}
+     */
+    httpPort: 3333,
+
+    /**
+     * The inteval in milliseconds between two writes of the logging file.
+     * @type {Number}
+     */
+    loggingInterval: 10000,
+
+    /**
+     * The filename of the logging file.
+     * @type {String}
+     */
+    loggingFilename: path.resolve(__dirname, 'live-data.json'),
+
+    /**
+     * Text file logging interval in milliseconds. A value of zero disables this functionality.
+     */
+    textLoggingInterval: 0,
+
+    /**
+     * Text file logging time to live in milliseconds.
+     */
+    textLoggingTimeToLive: 60000,
+
+    /**
+     * Text file logging directory.
+     */
+    textLoggingPath: path.resolve(__dirname, 'log'),
+
+    /**
+     * Text file logging options, passed to the `TextConverter` constructor.
+     */
+    textLoggingOptions: {
+        columnSeparator: '\t',
+        lineSeparator: '\r\n',
+        separateDateAndTime: false,
+    },
+
+    /**
+     * Either 'TcpConnection' or 'SerialConnection' to connect to the VBus.
+     * @type {String}
+     */
+    connectionClassName: 'TcpConnection',
+
+    connectionOptions: {
+        /**
+         * SerialConnection only:
+         * The serial port to which the Vbus/USB device is connected.
+         * @type {String}
+         */
+        path: '/dev/ttyACM0',
+
+        /**
+         * TcpConnection only:
+         * The host name / IP address of the VBus/LAN or Datalogger device.
+         * @type {String}
+         */
+        host: process.env.VBUS_HOST,
+
+        /**
+         * TcpConnection only:
+         * The password for the VBus/LAN or Datalogger device.
+         * @type {String}
+         */
+        password: process.env.VBUS_PASSWORD,
+    },
+
+    /**
+     * A map of packet field IDs to their custom name.
+     */
+    packetFieldNameMap: {
+        '00_0010_7E11_10_0100_000_2_0': 'Temperature collector',  // instead of "Temperater sensor 1"
+    },
+
+    /**
+     * A list of EM (extension module) sub-addresses to simulate.
+     */
+    emSimulatorSubAdresses: [
+        // 1,
+        // 2,
+        // 3,
+        // 4,
+        // 5,
+    ],
+
+};
+
+
+
+module.exports = config;

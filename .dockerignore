@@ -1,0 +1,26 @@
+# Node.js spezifische Dateien/Ordner
+node_modules
+npm-debug.log
+yarn.lock
+
+# Umgebungsdateien
+.env
+
+# Logs
+logs
+*.log
+
+# Temp-Dateien
+*.tmp
+*.swp
+
+# Build-Artefakte
+dist
+build
+
+# IDE-spezifische Dateien
+.vscode
+
+docs
+test
+tools
